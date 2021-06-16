@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
                     "Name": "Connexion Google"
                 },
                 {
-                    "Email": "titouan.desouza@efrei.net",
+                    "Email": "titouan.de.souza@efrei.net",
                     "Name": "Connexion Google"
                 },
                 {
